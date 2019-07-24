@@ -1,0 +1,82 @@
+//
+//  request.swift
+//  dogbreedClassifier
+//
+//  Created by Tucker on 7/17/19.
+//  Copyright © 2019 Tucker. All rights reserved.
+//
+
+import Foundation
+
+struct dogEndpoint {
+    static let scheme = "https"
+    static let host = "dog.ceo"
+    static let path = "/api/breed"
+}
+struct allbreedsEndpoint {
+    static let scheme = "https"
+    static let host = "dog.ceo"
+    static let path = "/api/breeds/list/all"
+}
+
+var breedComponents:URLComponents{
+    var components = URLComponents()
+    components.scheme = allbreedsEndpoint.scheme
+    components.host = allbreedsEndpoint.host
+    components.path = allbreedsEndpoint.path
+    return components
+}
+
+
+// MARK: - AllDogs
+struct AllDogs: Codable {
+    let message: [String: [String]]
+    let status: String
+}
+
+
+
+// MARK: - Pictures
+struct Pictures: Codable {
+    let message: [String]
+    let status: String
+}
+
+func jsonDecoder<T : Codable>(data:Data,type:T.Type, completionHandler:@escaping (_ details: T) -> Void)throws  {
+    let copyData = data
+    let decoder = JSONDecoder()
+    do {
+        let jsonEncode = try decoder.decode(type, from:copyData)
+        completionHandler(jsonEncode)
+    } catch {
+        throw error
+    }
+}
+
+
+func buildUrl(dogBreed:String) -> URLComponents{
+    
+    var components = URLComponents()
+    components.scheme = dogEndpoint.scheme
+    components.host = dogEndpoint.host
+    components.path = dogEndpoint.path + "/" + dogBreed + "/images"
+    
+
+    return components
+}
+
+
+public func get(url:URL,completionBlock:  @escaping  (Data?,URLResponse?,Error?)  -> Void)  -> Void {
+    var request = URLRequest(url:url,timeoutInterval: 50.0)
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) {data,response,error in
+        DispatchQueue.main.async  {
+            completionBlock(data,response ,error)
+        }
+    }
+    task.resume()
+}
+
+
+

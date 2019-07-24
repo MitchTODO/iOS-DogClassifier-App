@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE00E06522E63D0E001AEF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE00E06422E63D0E001AEF25 /* Assets.xcassets */; };
+		FE937D8922DF71D800400580 /* FullimageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE937D8822DF71D700400580 /* FullimageViewController.swift */; };
+		FE937D8C22DFAFA800400580 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE937D8B22DFAFA800400580 /* CollectionViewCell.swift */; };
+		FE937D8E22DFDB5200400580 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE937D8D22DFDB5200400580 /* request.swift */; };
+		FEB780E422DE037D00F156BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB780E322DE037D00F156BB /* AppDelegate.swift */; };
+		FEB780E622DE037D00F156BB /* DogClassifierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB780E522DE037D00F156BB /* DogClassifierViewController.swift */; };
+		FEB780E922DE037D00F156BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEB780E722DE037D00F156BB /* Main.storyboard */; };
+		FEB780F122DE037F00F156BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEB780EF22DE037F00F156BB /* LaunchScreen.storyboard */; };
+		FEB780F922DE042700F156BB /* ImageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = FEB780F822DE042700F156BB /* ImageClassifier.mlmodel */; };
+		FEB780FD22DE2DB200F156BB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB780FC22DE2DB200F156BB /* TableViewCell.swift */; };
+		FEFF33BF22E78C7C003FE906 /* errorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF33BE22E78C7C003FE906 /* errorHandle.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FE00E06422E63D0E001AEF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE937D8822DF71D700400580 /* FullimageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullimageViewController.swift; sourceTree = "<group>"; };
+		FE937D8B22DFAFA800400580 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		FE937D8D22DFDB5200400580 /* request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = request.swift; sourceTree = "<group>"; };
+		FEB780E022DE037D00F156BB /* dogbreedClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dogbreedClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEB780E322DE037D00F156BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FEB780E522DE037D00F156BB /* DogClassifierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogClassifierViewController.swift; sourceTree = "<group>"; };
+		FEB780E822DE037D00F156BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FEB780F022DE037F00F156BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FEB780F222DE037F00F156BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEB780F822DE042700F156BB /* ImageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ImageClassifier.mlmodel; sourceTree = "<group>"; };
+		FEB780FC22DE2DB200F156BB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FEFF33BE22E78C7C003FE906 /* errorHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorHandle.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FEB780DD22DE037D00F156BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE937D8A22DF71E100400580 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FEB780E522DE037D00F156BB /* DogClassifierViewController.swift */,
+				FE937D8822DF71D700400580 /* FullimageViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FEB780D722DE037D00F156BB = {
+			isa = PBXGroup;
+			children = (
+				FEB780E222DE037D00F156BB /* dogbreedClassifier */,
+				FEB780E122DE037D00F156BB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEB780E122DE037D00F156BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FEB780E022DE037D00F156BB /* dogbreedClassifier.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FEB780E222DE037D00F156BB /* dogbreedClassifier */ = {
+			isa = PBXGroup;
+			children = (
+				FEB780E322DE037D00F156BB /* AppDelegate.swift */,
+				FEFF33BC22E7719C003FE906 /* RequestHandler */,
+				FEFF33BD22E771B2003FE906 /* ErrorHandler */,
+				FEFF33BA22E76E17003FE906 /* StoryBoards */,
+				FEFF33BB22E76E33003FE906 /* TrainedModel */,
+				FE937D8A22DF71E100400580 /* ViewControllers */,
+				FEFF33B922E76DEC003FE906 /* ViewCells */,
+				FE00E06422E63D0E001AEF25 /* Assets.xcassets */,
+				FEB780F222DE037F00F156BB /* Info.plist */,
+			);
+			path = dogbreedClassifier;
+			sourceTree = "<group>";
+		};
+		FEFF33B922E76DEC003FE906 /* ViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				FEB780FC22DE2DB200F156BB /* TableViewCell.swift */,
+				FE937D8B22DFAFA800400580 /* CollectionViewCell.swift */,
+			);
+			path = ViewCells;
+			sourceTree = "<group>";
+		};
+		FEFF33BA22E76E17003FE906 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				FEB780E722DE037D00F156BB /* Main.storyboard */,
+				FEB780EF22DE037F00F156BB /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		FEFF33BB22E76E33003FE906 /* TrainedModel */ = {
+			isa = PBXGroup;
+			children = (
+				FEB780F822DE042700F156BB /* ImageClassifier.mlmodel */,
+			);
+			path = TrainedModel;
+			sourceTree = "<group>";
+		};
+		FEFF33BC22E7719C003FE906 /* RequestHandler */ = {
+			isa = PBXGroup;
+			children = (
+				FE937D8D22DFDB5200400580 /* request.swift */,
+			);
+			path = RequestHandler;
+			sourceTree = "<group>";
+		};
+		FEFF33BD22E771B2003FE906 /* ErrorHandler */ = {
+			isa = PBXGroup;
+			children = (
+				FEFF33BE22E78C7C003FE906 /* errorHandle.swift */,
+			);
+			path = ErrorHandler;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FEB780DF22DE037D00F156BB /* dogbreedClassifier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEB780F522DE037F00F156BB /* Build configuration list for PBXNativeTarget "dogbreedClassifier" */;
+			buildPhases = (
+				FEB780DC22DE037D00F156BB /* Sources */,
+				FEB780DD22DE037D00F156BB /* Frameworks */,
+				FEB780DE22DE037D00F156BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dogbreedClassifier;
+			productName = dogbreedClassifier;
+			productReference = FEB780E022DE037D00F156BB /* dogbreedClassifier.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FEB780D822DE037D00F156BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Tucker;
+				TargetAttributes = {
+					FEB780DF22DE037D00F156BB = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = FEB780DB22DE037D00F156BB /* Build configuration list for PBXProject "dogbreedClassifier" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FEB780D722DE037D00F156BB;
+			productRefGroup = FEB780E122DE037D00F156BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FEB780DF22DE037D00F156BB /* dogbreedClassifier */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FEB780DE22DE037D00F156BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEB780F122DE037F00F156BB /* LaunchScreen.storyboard in Resources */,
+				FE00E06522E63D0E001AEF25 /* Assets.xcassets in Resources */,
+				FEB780E922DE037D00F156BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FEB780DC22DE037D00F156BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEB780E622DE037D00F156BB /* DogClassifierViewController.swift in Sources */,
+				FE937D8E22DFDB5200400580 /* request.swift in Sources */,
+				FEFF33BF22E78C7C003FE906 /* errorHandle.swift in Sources */,
+				FE937D8C22DFAFA800400580 /* CollectionViewCell.swift in Sources */,
+				FEB780E422DE037D00F156BB /* AppDelegate.swift in Sources */,
+				FEB780FD22DE2DB200F156BB /* TableViewCell.swift in Sources */,
+				FE937D8922DF71D800400580 /* FullimageViewController.swift in Sources */,
+				FEB780F922DE042700F156BB /* ImageClassifier.mlmodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FEB780E722DE037D00F156BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEB780E822DE037D00F156BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FEB780EF22DE037F00F156BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEB780F022DE037F00F156BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FEB780F322DE037F00F156BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FEB780F422DE037F00F156BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FEB780F622DE037F00F156BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XUYDZSBQ86;
+				INFOPLIST_FILE = dogbreedClassifier/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MTeam.dogbreedClassifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FEB780F722DE037F00F156BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XUYDZSBQ86;
+				INFOPLIST_FILE = dogbreedClassifier/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MTeam.dogbreedClassifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FEB780DB22DE037D00F156BB /* Build configuration list for PBXProject "dogbreedClassifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEB780F322DE037F00F156BB /* Debug */,
+				FEB780F422DE037F00F156BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FEB780F522DE037F00F156BB /* Build configuration list for PBXNativeTarget "dogbreedClassifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEB780F622DE037F00F156BB /* Debug */,
+				FEB780F722DE037F00F156BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FEB780D822DE037D00F156BB /* Project object */;
+}
