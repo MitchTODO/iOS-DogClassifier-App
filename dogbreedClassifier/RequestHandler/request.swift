@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Endpoints
+
 struct dogEndpoint {
     static let scheme = "https"
     static let host = "dog.ceo"
@@ -28,20 +30,18 @@ var breedComponents:URLComponents{
 }
 
 
-// MARK: - AllDogs
+// MARK: - CodableStructs
 struct AllDogs: Codable {
     let message: [String: [String]]
-    let status: String
+    var status: String
 }
 
-
-
-// MARK: - Pictures
 struct Pictures: Codable {
     let message: [String]
     let status: String
 }
 
+// MARK: - jsonDecoder
 func jsonDecoder<T : Codable>(data:Data,type:T.Type, completionHandler:@escaping (_ details: T) -> Void)throws  {
     let copyData = data
     let decoder = JSONDecoder()
@@ -53,19 +53,18 @@ func jsonDecoder<T : Codable>(data:Data,type:T.Type, completionHandler:@escaping
     }
 }
 
-
+// MARK: - buildUrl
 func buildUrl(dogBreed:String) -> URLComponents{
     
     var components = URLComponents()
     components.scheme = dogEndpoint.scheme
     components.host = dogEndpoint.host
     components.path = dogEndpoint.path + "/" + dogBreed + "/images"
-    
 
     return components
 }
 
-
+// MARK: - getRequst
 public func get(url:URL,completionBlock:  @escaping  (Data?,URLResponse?,Error?)  -> Void)  -> Void {
     var request = URLRequest(url:url,timeoutInterval: 50.0)
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -77,6 +76,7 @@ public func get(url:URL,completionBlock:  @escaping  (Data?,URLResponse?,Error?)
     }
     task.resume()
 }
+
 
 
 

@@ -10,110 +10,52 @@ import UIKit
 
 class FullimageViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-
+    // MARK: - IBOutlets
     @IBOutlet weak var dogCollections: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: - Class parameters
     var topDogBreed:String?
     var allPicturesForRealatedDog:Pictures?
     let reuseIdentifier = "Ccell"
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup collectionView
         dogCollections.delegate = self
         dogCollections.dataSource = self
+        
+        // show activityIndicator
+        self.activityIndicator.isHidden = false
+        
+        // setup dog breed
         self.title = topDogBreed
         let fixString = topDogBreed!.replacingOccurrences(of: "-", with: " ", options: .literal, range: nil)
-        let search = fixDogName(fixString)
-
+        
+        // fix dog breed to match api documentation
+        let search = fixBreedName(fixString,breeds:appDelegate.breeds)
+        
+        // build url and send request for dog breed
         let dogSearchUrl = buildUrl(dogBreed: search)
         print (dogSearchUrl)
         fetchDogs(dogUrl:dogSearchUrl.url!)
-
-    }
-    
-    func reverseSentence(_ sentence: String) -> String {
-        //create array of words
-        let words = sentence.components(separatedBy: " ")
-        var result = ""
-        //append words to result with a space
-        for word in words.reversed() {
-            result += "\(word) "
-        }
-        return result
     }
     
     
-    func fixDogName(_ sentence: String) -> String {
-        //create array of words
-        var mainBreed = ""
-        var subBreed = ""
-        let words = sentence.components(separatedBy: " ")
-        var potentalMainbreeds: [String] = []
-        var potentalSubbreeds: [String] = []
-        for word in words.reversed(){
-            
-            let indexValueForKey = appDelegate.breeds?.message.index(forKey: word)
-            
-            if indexValueForKey != nil {
-                
-                let subBreed = appDelegate.breeds?.message[word]
-                potentalMainbreeds.append(word)
-                mainBreed = word
-                if subBreed?.count == 0{
-                    
-                }else{
-                    potentalSubbreeds.append(contentsOf:subBreed!)
-                }
-                
-            }
-            
+    //MARK: - viewWillTransition
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        guard let flowLayout = dogCollections.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
         }
-        
-        for potental in potentalMainbreeds{
-            
-            let fault = appDelegate.breeds?.message[potental]
-            for w in words{
-                let new = fault?.contains(w)
-                if new == true{
-                    mainBreed = potental
-                    subBreed = w
-                }
-            }
-        }
-        
-        if subBreed == ""{
-            return "\(mainBreed)"
-        }else{
-            return "\(mainBreed)/\(subBreed)"
-        }
-        
-        
-    }
-    
-    func fetchDogs(dogUrl:URL){
-        get(url:dogUrl){ (output,response,error) in
-            if output != nil {
-                do{
-                    try jsonDecoder(data: output!, type: Pictures.self){
-                        (decodedPins) in
-                        self.allPicturesForRealatedDog = decodedPins
-                        self.activityIndicator.isHidden = false
-                        self.dogCollections.reloadData()
-                    }
-                }catch{
-                    
-                }
-            }else{
-                print ("No data")
-            }
-            
-        }
+        flowLayout.invalidateLayout()
     }
     
     
+    // MARK: - CollectionView protocol
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPicturesForRealatedDog?.message.count ?? 0
     }
@@ -138,51 +80,71 @@ class FullimageViewController: UIViewController, UINavigationControllerDelegate,
         // set reusable cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
         
-        
         // set placeholder image
         cell.dogImageFromCeo.image = UIImage(named: "icon")
         
         // request for image related to each cell
-        
-        //print (allPicturesForRealatedDog!.message[indexPath.count])
         let url = NSURL(string: allPicturesForRealatedDog!.message[indexPath.item])
-        photoForCell(imageUrl: url! as URL, cell: cell)
+        imageForEachCell(imageUrl: url! as URL, cell: cell)
         
         return cell
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        guard let flowLayout = dogCollections.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
+    
+    // MARK: - Class request modifiers
+    
+    /// Get request for dog-breed image urls
+    ///
+    /// - Parameters:
+    ///   - dogUrl : dog-breed url
+    /// - Note: dogUrl's are created from buildUrl modifier
+    
+    func fetchDogs(dogUrl:URL){
+        get(url:dogUrl){ (output,response,error) in
+            if output != nil {
+                do{
+                    try jsonDecoder(data: output!, type: Pictures.self){
+                        (decodedPins) in
+                        self.allPicturesForRealatedDog = decodedPins
+                        self.activityIndicator.isHidden = true
+                        self.dogCollections.reloadData()
+                    }
+                }catch{
+                    error.alert(with: self)
+                    self.activityIndicator.isHidden = true
+                }
+            }else{
+                error?.alert(with: self)
+                self.activityIndicator.isHidden = true
+            }
+            
         }
-        flowLayout.invalidateLayout()
     }
 
-    func photoForCell(imageUrl:URL,cell:CollectionViewCell) -> Void{
+    /// Get request for dog-breed image
+    ///
+    /// - Parameters:
+    ///   - imageUrl: image url
+    ///   - cell: cell the image should be loaded
+    /// - Note: imageUrl is used to request the dog-breed image loaded to UIImage View
+    
+    func imageForEachCell(imageUrl:URL,cell:CollectionViewCell) -> Void{
         get(url:imageUrl){ (output,response,error) in
             if output != nil{
                 let data = output!
                 // cast data as UIImage
                 if let image = UIImage(data: data) {
-        
                     cell.dogImageFromCeo.image = image
-                    
-                    // stop and hide indicator
-                    //cell.aIndicator.stopAnimating()
-                    cell.aIndicator.isHidden = true
-                    
-                
+                    cell.activityIndicator.isHidden = true
+
                 }else{
-                    print ("No data")
+                    error?.alert(with: self)
                 }
             
             }else{
-                print ("NO")
+                error?.alert(with:self)
             }
         }
     }
     
 }
-
-

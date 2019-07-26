@@ -9,7 +9,7 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var aIndicator: UIActivityIndicatorView!
+    // MARK: - IBOutlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var dogImageFromCeo: UIImageView!
 }

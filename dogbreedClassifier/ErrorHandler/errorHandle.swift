@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-
+// extension to present UIAlertController to user
 extension Error {
     func alert(with controller: UIViewController) {
         let alertController = UIAlertController(title: nil , message: "\(self.localizedDescription)", preferredStyle: .alert)

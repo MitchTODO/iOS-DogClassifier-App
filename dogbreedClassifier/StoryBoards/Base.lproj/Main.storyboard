@@ -21,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="MhM-Bd-Ojj">
                                 <rect key="frame" x="0.0" y="88" width="414" height="752"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="A1B-VJ-SOd">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="A1B-VJ-SOd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="375.5"/>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tuO-sG-vNc">
@@ -109,13 +109,13 @@
                                 <items>
                                     <barButtonItem tag="2" title="Library" image="library" id="qsZ-9T-9XC">
                                         <connections>
-                                            <action selector="chooseImage:" destination="5fC-Ht-CJv" id="9Po-eL-ftB"/>
+                                            <action selector="chooseImageForPrediction:" destination="5fC-Ht-CJv" id="q8a-9I-AHp"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="m33-Sy-WyZ"/>
                                     <barButtonItem tag="1" systemItem="camera" id="zW3-kW-cjm">
                                         <connections>
-                                            <action selector="chooseImage:" destination="5fC-Ht-CJv" id="0vP-Wd-vGs"/>
+                                            <action selector="chooseImageForPrediction:" destination="5fC-Ht-CJv" id="zFp-Pi-BLh"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -167,7 +167,7 @@
             <objects>
                 <viewController id="Ihe-Vy-KGb" customClass="FullimageViewController" customModule="dogbreedClassifier" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HCg-1j-unR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K2e-dL-Hws">
@@ -210,7 +210,7 @@
                                             <constraint firstItem="zhn-OX-hfr" firstAttribute="centerX" secondItem="Wfk-TM-jO1" secondAttribute="centerX" id="mJ9-4E-Nhp"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="aIndicator" destination="zhn-OX-hfr" id="MNw-4A-rmQ"/>
+                                            <outlet property="activityIndicator" destination="zhn-OX-hfr" id="Jgt-dV-V1U"/>
                                             <outlet property="dogImageFromCeo" destination="Wfk-TM-jO1" id="OZt-qv-wBf"/>
                                         </connections>
                                     </collectionViewCell>
@@ -241,6 +241,7 @@
             <objects>
                 <navigationController id="6dY-Ad-1Px" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WRc-cc-XMU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -253,8 +254,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="200" height="200"/>
         <image name="library" width="88" height="88"/>
         <image name="search" width="200" height="200"/>
+        <image name="whiteIcon" width="200" height="180"/>
     </resources>
 </document>
