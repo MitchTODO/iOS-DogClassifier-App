@@ -254,8 +254,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="library" width="88" height="88"/>
-        <image name="search" width="200" height="200"/>
-        <image name="whiteIcon" width="200" height="180"/>
+        <image name="library" width="58.5" height="58.5"/>
+        <image name="search" width="133" height="133"/>
+        <image name="whiteIcon" width="133" height="120"/>
     </resources>
 </document>

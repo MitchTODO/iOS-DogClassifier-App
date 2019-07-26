@@ -40,7 +40,6 @@ class FullimageViewController: UIViewController, UINavigationControllerDelegate,
         
         // build url and send request for dog breed
         let dogSearchUrl = buildUrl(dogBreed: search)
-        print (dogSearchUrl)
         fetchDogs(dogUrl:dogSearchUrl.url!)
     }
     

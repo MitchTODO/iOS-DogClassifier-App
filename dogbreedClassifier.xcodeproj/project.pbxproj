@@ -369,7 +369,7 @@
 		FEB780F622DE037F00F156BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XUYDZSBQ86;
 				INFOPLIST_FILE = dogbreedClassifier/Info.plist;
@@ -387,7 +387,7 @@
 		FEB780F722DE037F00F156BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XUYDZSBQ86;
 				INFOPLIST_FILE = dogbreedClassifier/Info.plist;
