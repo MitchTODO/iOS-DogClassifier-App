@@ -305,7 +305,7 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
     // MARK: - prepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "toDogCeo") {
-            let destinationVC = segue.destination as! FullimageViewController
+            let destinationVC = segue.destination as! DogBreedImageViewController
             destinationVC.topDogBreed = sender as? String
         }
     }

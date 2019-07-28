@@ -162,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="1682.608695652174" y="160.04464285714286"/>
         </scene>
-        <!--Fullimage View Controller-->
+        <!--Dog Breed Image View Controller-->
         <scene sceneID="uHH-Lb-K4h">
             <objects>
-                <viewController id="Ihe-Vy-KGb" customClass="FullimageViewController" customModule="dogbreedClassifier" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ihe-Vy-KGb" customClass="DogBreedImageViewController" customModule="dogbreedClassifier" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HCg-1j-unR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

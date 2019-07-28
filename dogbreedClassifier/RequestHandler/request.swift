@@ -30,7 +30,7 @@ var breedComponents:URLComponents{
 }
 
 
-// MARK: - CodableStructs
+// MARK: - CodeableStructs
 struct AllDogs: Codable {
     let message: [String: [String]]
     var status: String

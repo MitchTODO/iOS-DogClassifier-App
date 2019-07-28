@@ -2,8 +2,7 @@
 //  imageHelper.swift
 //  dogbreedClassifier
 //
-//  Created by Tucker on 7/24/19.
-//  Copyright © 2019 Tucker. All rights reserved.
+//  Credit : https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
 //
 
 import Foundation
