@@ -1,5 +1,5 @@
 
-Work in progress will update in the next few days as of	7/26/2019
+Work in progress will update in the next few days as of	7/28/2019
 
 <div> 
   <img src="/readmePic/mainScreen.png " alt="Mainscreen" width="240">
