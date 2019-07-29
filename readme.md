@@ -179,7 +179,7 @@ All errors are handled by extending a function that shows a UIAlertController to
 
 Clone the repro
 
-      https://github.com/MitchTODO/iOS-DogClassifier-App
+      git clone https://github.com/MitchTODO/iOS-DogClassifier-App
 
 Launch Xcode and select xcode project file
 
