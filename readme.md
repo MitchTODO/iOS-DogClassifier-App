@@ -23,8 +23,6 @@ UI consist of two views, "DogClassifierViewController.swift" as the root and "Do
 
 The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from the photo library. Right bar button displays the camera to capture an image. Source image populates the main image view and classified by the trained neural network. Output from the neural network is presented in the table view under the main image. Each table cell displays the breed name on left and precent of confidence on right side. Informational icon exist in each cell informing the user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button enables saving and sending screen results. Right refreshes the screen back to when the "view did load".
 
-_Note: Outputs are limited to only relevant classifications more about this below._
-
 <div> 
   <img src="/readmePic/mainScreen.png " alt="Mainscreen" width="240">
   <img src="/readmePic/predict.png " alt="predict" width="240">
@@ -32,6 +30,7 @@ _Note: Outputs are limited to only relevant classifications more about this belo
   <img src="/readmePic/save.png " alt="save" width="240">
 </div>
 
+_Note: Outputs are limited to only relevant classifications more about this below._
 
 ### DogBreedImageViewController
 
