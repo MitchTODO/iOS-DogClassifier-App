@@ -1,7 +1,7 @@
 <div>
   <img src="/readmePic/mainScreen.png " alt="Mainscreen" width="240">
-  <img src="/readmePic/dogPics.png " alt="dog pictures" width="240">
   <img src="/readmePic/predict.png " alt="predict" width="240">
+  <img src="/readmePic/dogPics.png " alt="dog pictures" width="240">
   <img src="/readmePic/save.png " alt="save" width="240">
   </div>
 
@@ -24,28 +24,29 @@ Deployment Target: 12.2
 
 ## User Interface
 
-UI consist of two views "DogClassifierViewController.swift" as the root view and "DogBreedImageViewController.swift"
+UI consist of two views, "DogClassifierViewController.swift" as the root and "DogBreedImageViewController.swift"
 
 ### DogClassifierViewController
 
-The user starts by selecting a dog image that will be used for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button allows the user to select a image from the photo library. Right bar button will present the camera and will used the captured image has the source. Source image will be used to populate the main image view and be classified by the trained neural network. Output from the neural network is presented within the table view under the main image view. Each table view cell will display the breed name by label on the left and precent of confidence for that breed on the right. A informational icon exist in each cell informing the user that the cells are press-able. Navigational bar also exist within the view containing two bar buttons. Left bar button allows for saving and sending screen results. Right will refresh the screen back to when the view did load.
+The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from the photo library. Right bar button displays the camera to capture an image. Source image populates the main image view and classified by the trained neural network. Output from the neural network is presented in the table view under the main image. Each table cell displays the breed name on left and precent of confidence on right side. Informational icon exist in each cell informing the user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button enables saving and sending screen results. Right refreshes the screen back to when the "view did load".
 
 _Note: Outputs are limited to only relevant classifications more about this below._
 
 
 ### DogBreedImageViewController
 
-This View is presented by segue when the user presses a table cell within the root view (DogClassifierViewController). Along with the segue the breed name contained within the pressed table cell is passed allowing a network request to get all image of the relevant breed. Images are then displayed in imageView in each collection cell within a collection view.
+This view is presented when the user selects a table cell from the root view (DogClassifierViewController). A segue is triggered and passes the selected breed name. Allowing a network request to get images of that breed. Images are then displayed in each collection cell filling the view.
+
 
 ---
 
 ## Neural Network
 
-Apple's CreateMLUI is a fantastic library allowing for anyone to build a simply trained neural network. Some data processing was done to the dataset to increase training data and overall performance. The current model classifies at 61% accuracy this was a improvement over the 55% without data processing. (TrainedModel/ImageClassifier.mlmodel)
+Apple's CreateMLUI is a fantastic library allowing for anyone to build a simply trained neural network. Some data processing was done to the dataset to increase training data and overall performance. The current model classifies at 61% accuracy this improved from the 55% without data processing. (TrainedModel/ImageClassifier.mlmodel)
 
   <img src="/readmePic/model.png " alt="save" width="240">
 
-From the lines below a drag n drop neural network is created. By dragging the dataset into Xcode, Xcode starts training the model.
+From the lines below a drag n drop neural network is created. Training begins when the dataset is dragged into Xcode.
 
 ```javascript
 import CreateMLUI
@@ -56,7 +57,7 @@ builder.showInLiveView()
 
 ### DataSet
 
-The dataset is from Stanford Dogs Dataset, this dataset seemed to be adequate at 120 different breeds but having some miss-spelled breed names.
+The dataset is from "Stanford Dogs Dataset", this dataset consist of 120 different breeds and 20,580 images.
 
 http://vision.stanford.edu/aditya86/ImageNetDogs/
 
@@ -79,35 +80,36 @@ _Note: predictImage is asynchronous with a QoS put in place has model prediction
 
 ## Networking
 
-The "dog.ceo" api is used to make request for dog pictures. When the app first launches a get-request is executed to retrieve a list off all dog-breeds the api supports. This is used to prevent errors and match model dog-breeds including sub-breeds to the api breed endpoint. Get function found in RequestHandler/request.swift handles all requests asynchronous. When a dog breed is selected from the table view cell and the  DogBreedImageViewController is presented the breed name associated with pressed cell is used to constructed the url path which is then used to get dog image urls. By reloading the collections view protocols (lines 57-90), data from image urls array allows each cell to be match up with url. Each cell executes a asynchronous request, for the associated image by calling the "imageForEachCell" function (line 130-147).
+The "dog.ceo" api is used to display dog images based on breed. When the app first launches a get-request is executed to retrieve a list of all dog-breeds the api supports. This is used to prevent errors and match model output to the api breed endpoint. "Get" function, found in "RequestHandler/request.swift", handles all asynchronous requests. After the DogBreedImageViewController is presented, the breed name associated with pressed table cell is used to build a url path. The fully constructed url retrieves all image urls associated with the selected breed. Each cell created is matched with a single image url used to executes an asynchronous request.
 
 _Note: All network request use the same "get" function within "RequestHandler/request.swift" (68-78)_
 
-### Decoding JSON
+### Decoding
 
-All incoming data is decoded into code-able structs. A "jsonDecoder"  function is used for simplicity and error handling found within "RequestHandler/request.swift" (33-54).
+Incoming data is decoded into code-able structs.   A "jsonDecoder"  function is used for simplicity and error handling found within "RequestHandler/request.swift" (lines 33-54).
 
+_Note: Dog images are casted has UIImage_
 
 ### Endpoints
 
-Two base endpoints are constructed within "RequestHandler/request.swift" (13-30).
+Two base endpoints are constructed within "RequestHandler/request.swift" (line 13-30). A "buildUrl" function is used to construct the full endpoint. "RequestHandler/request.swift" (line 57-65)
 
-"DogEndpoint" is used to retrieve dogs image urls.
+1. "DogEndpoint" is used to retrieve dogs image urls.
 
-"allbreedsEndpoint" is used to retrieve all breeds including sub-breeds.
+2. "allbreedsEndpoint" is used to retrieve all breeds including sub-breeds.
 
 
-In order for model predicted names to match api documentation helper functions where constructed "Helpers/dogNameHelper.swift". Functions within allow the changing of spaces (fixErrorPhoneDogBreeds) and matching of main-breed to sub-breed (fixBreedName). Some conflicts occurred between model output dog-breed and dog-breed api endpoint, some hard coded breed-names help prevent such conflicts.
+In order for model output names to match api documentation, helper functions where constructed "Helpers/dogNameHelper.swift". Functions allow the changing of spaces (fixErrorPhoneDogBreeds) and matching of main-breed to sub-breed (fixBreedName). In some cases hard coded breed names prevent any conflicts.
 
-A "buildUrl" function is used to construct the full endpoint with values supplied from "fixBreedName" function. "RequestHandler/request.swift" (57-65)
+
 
 ### Activity Indicators
 
-As network connectivity can be slow activity Indicators are used throughout to prevent user frustration.
+If network connectivity is slow, activity indicators become visible preventing user frustration.
 
 ---
 
-Trimmed list of dog-breed names included sub-breeds
+<b>Trimmed list of dog-breed names included sub-breeds</b>
 
 ```json
 {
@@ -141,7 +143,7 @@ Trimmed list of dog-breed names included sub-breeds
 ```
 
 
-Hard-coded breed-names Found in file /Helper/dogNamehelper.swift
+<b> Hard-coded breed-names Found in file /Helper/dogNamehelper.swift </b>
 
 ``` javascript
 ["boston bulldog","boston bull"],
@@ -159,14 +161,17 @@ Hard-coded breed-names Found in file /Helper/dogNamehelper.swift
 ["basset hound","basset"],
 ["germanshepherd","german shepherd"]
 ```
-
+"""
 
 ---
 
 ## Error Handling
 
 All errors are handled by extending a function that shows a UIAlertController to the Error class. This function allows for users to be present with a friendly error message describing the error. "ErrorHandle.swift"
+"""
+## No Core Data
 
+Core data is not necessary since user has the ability to save / share.
 
 ---
 
