@@ -1,9 +1,11 @@
 
+
+
 # Dog Classifier iOS App
 
 ## Description
 
-iOS app that allows for a 120 different dog breed to be classified from a user selected image.
+iOS app classifier that will predict dog breed by passing selected image into a trained neural network model.
 
 ---
 
@@ -21,30 +23,29 @@ UI consist of two views, "DogClassifierViewController.swift" as the root and "Do
 
 ### DogClassifierViewController
 
-The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from the photo library. Right bar button displays the camera to capture an image. Source image populates the main image view and classified by the trained neural network. Output from the neural network is presented in the table view under the main image. Each table cell displays the breed name on left and precent of confidence on right side. Informational icon exist in each cell informing the user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button enables saving and sending screen results. Right refreshes the screen back to when the "view did load".
+The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from photo library. Right bar button displays the camera to capture an image. Source image populates main image view and is classified by the trained neural network. Output from the neural network is displayed in the table view under the main image. Each table cell displays the breed name on left and percent of confidence on right side. Informational icon exist in each cell informing user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button enables saving and sending screen results. Right refreshes screen back to when the "view did load".
 
-<div> 
+<div>
   <img src="/readmePic/mainScreen.png " alt="Mainscreen" width="240">
   <img src="/readmePic/predict.png " alt="predict" width="240">
-  
   <img src="/readmePic/save.png " alt="save" width="240">
-</div>
+  </div>
 
 _Note: Outputs are limited to only relevant classifications more about this below._
 
+
 ### DogBreedImageViewController
 
-This view is presented when the user selects a table cell from the root view (DogClassifierViewController). A segue is triggered and passes the selected breed name. Allowing a network request to get images of that breed. Images are then displayed in each collection cell filling the view.
+This controller will display up to 150 images of a specific dog breed to the user by collection view. The specific dog breed is selected within root view (DogClassifierViewController). Through the use of a segue, the breed name can be passed allowing a network request to get images.
 
-<div> 
-  <img src="/readmePic/dogPics.png " alt="dog pictures" width="240">
-  </div>
-
----
+<div>
+<img src="/readmePic/dogPics.png " alt="dog pictures" width="240">
+</div>
 
 ## Neural Network
 
-Apple's CreateMLUI is a fantastic library allowing for anyone to build a simply trained neural network. Some data processing was done to the dataset to increase training data and overall performance. The current model classifies at 61% accuracy this improved from the 55% without data processing. (TrainedModel/ImageClassifier.mlmodel)
+
+Apple's CreateMLUI library was used to train the dog classifying neural network as a "mlmodel" (TrainedModel/ImageClassifier.mlmodel). CoreML library allows the utilization of the trained neural network within the app. Some additional data processing done to the dataset increased training data and overall performance. The current model classifies at 61% accuracy, improvement from 55% without data processing. (TrainedModel/ImageClassifier.mlmodel)
 
   <img src="/readmePic/model.png " alt="save" width="240">
 
@@ -59,7 +60,7 @@ builder.showInLiveView()
 
 ### DataSet
 
-The dataset is from "Stanford Dogs Dataset", this dataset consist of 120 different breeds and 20,580 images.
+The dataset is from "Stanford Dogs Dataset", consisting of 120 different breeds and 20,580 images.
 
 http://vision.stanford.edu/aditya86/ImageNetDogs/
 
@@ -74,7 +75,7 @@ Data processing included blurring and flipping images.
 
 ### Classifying a image
 
-Image classifying first starts by having the user select a source image. The source image is then passed into a private "predictImage" function within the "DogClassifierViewController" (lines 237-272). PredictImage function will first crop and resize the image to fit the model (299 x 299) this is done by a UIImage Class extension "Helpers/imageHelper.swift". Then the image will be passed into the model. Model outputs a dictionary. Dictionary keys are the breed name and key values are precent of confidence. Values are then sorted from greatest to lowest and filtered by keeping keys greater then zero precent. Each item that passes the filter is separated and appended to arrays. By reloading the table view the table protocol functions (lines 276-303) will read from the arrays and populate the table. By sorting the dictionary the table cells are already sorted with the most likely dog breed at the top.
+Image classifying first starts by having the user select a source image. The source image is passed into a private "predictImage" function within the "DogClassifierViewController" (lines 237-272). PredictImage function crops and resize the image to fit the model through a UIImage Class extension "Helpers/imageHelper.swift". By passing the image into the model, a dictionary is returned. Dictionary keys as breed name and values as confidence level (%). Values are then sorted and filtered from greatest to zero percent. Each item passing the filter  populates the table view with highest confidence level dog breed at the top.
 
 _Note: predictImage is asynchronous with a QoS put in place has model prediction can be cpu intensive_
 
@@ -82,7 +83,7 @@ _Note: predictImage is asynchronous with a QoS put in place has model prediction
 
 ## Networking
 
-The "dog.ceo" api is used to display dog images based on breed. When the app first launches a get-request is executed to retrieve a list of all dog-breeds the api supports. This is used to prevent errors and match model output to the api breed endpoint. "Get" function, found in "RequestHandler/request.swift", handles all asynchronous requests. After the DogBreedImageViewController is presented, the breed name associated with pressed table cell is used to build a url path. The fully constructed url retrieves all image urls associated with the selected breed. Each cell created is matched with a single image url used to executes an asynchronous request.
+The "dog.ceo" api is used to display dog images based on breed. When the app first launches a get-request is executed to retrieve a list of all dog-breeds the api supports. This is used to prevent errors and match model output to the api breed endpoint. "Get" function, found in "RequestHandler/request.swift", handles all asynchronous requests. After the DogBreedImageViewController is displayed, the breed name associated with pressed table cell is used to build a url path. The fully constructed url retrieves all image urls associated with the selected breed. Each cell created is matched with a single image url used to executes an asynchronous request.
 
 _Note: All network request use the same "get" function within "RequestHandler/request.swift" (68-78)_
 
@@ -169,21 +170,28 @@ If network connectivity is slow, activity indicators become visible preventing u
 
 ## Error Handling
 
-All errors are handled by extending a function that shows a UIAlertController to the Error class. This function allows for users to be present with a friendly error message describing the error. "ErrorHandle.swift"
-"""
-## No Core Data
+All errors are handled by extending a function that shows a UIAlertController to the Error class. This function allows for users to be notified with a friendly error message describing the error. (ErrorHandle.swift)
 
-Core data is not necessary since user has the ability to save / share.
 
 ---
 
 ## QuickStart
 
+Clone the repro
+
+      THIS WILL BE ADDED
+
+Launch Xcode and select xcode project file
+
+      dogbreedClassifier.xcodeproj
+
+Project will be displayed in xcode and simulation can be begin.
+
 ---
 
 ## Sources
 
-Dog Dataset using for training : http://vision.stanford.edu/aditya86/ImageNetDogs/
+Dog Dataset used for training : http://vision.stanford.edu/aditya86/ImageNetDogs/
 
 Dog Api used to load images of a breed : https://dog.ceo/dog-api/documentation/
 
@@ -191,3 +199,8 @@ Dog Api used to load images of a breed : https://dog.ceo/dog-api/documentation/
 ---
 
 ## License
+
+MitchTODO/iOS-DogClassifier-App is licensed under the
+
+Apache License 2.0
+A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
