@@ -177,11 +177,11 @@ All errors are handled by extending a function that shows a UIAlertController to
 
 ## QuickStart
 
-Clone the repro
+Clone the repro.
 
       git clone https://github.com/MitchTODO/iOS-DogClassifier-App
 
-Launch Xcode and select xcode project file
+Launch Xcode and select xcode project file within the repro.
 
       dogbreedClassifier.xcodeproj
 
