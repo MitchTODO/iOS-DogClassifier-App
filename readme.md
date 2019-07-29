@@ -1,10 +1,3 @@
-<div>
-  <img src="/readmePic/mainScreen.png " alt="Mainscreen" width="240">
-  <img src="/readmePic/predict.png " alt="predict" width="240">
-  <img src="/readmePic/dogPics.png " alt="dog pictures" width="240">
-  <img src="/readmePic/save.png " alt="save" width="240">
-  </div>
-
 
 # Dog Classifier iOS App
 
@@ -32,11 +25,21 @@ The user starts by selecting a dog image for classifying. Two bar buttons within
 
 _Note: Outputs are limited to only relevant classifications more about this below._
 
+<div> 
+  <img src="/readmePic/mainScreen.png " alt="Mainscreen" width="240">
+  <img src="/readmePic/predict.png " alt="predict" width="240">
+  
+  <img src="/readmePic/save.png " alt="save" width="240">
+</div>
+
 
 ### DogBreedImageViewController
 
 This view is presented when the user selects a table cell from the root view (DogClassifierViewController). A segue is triggered and passes the selected breed name. Allowing a network request to get images of that breed. Images are then displayed in each collection cell filling the view.
 
+<div> 
+  <img src="/readmePic/dogPics.png " alt="dog pictures" width="240">
+  </div>
 
 ---
 
