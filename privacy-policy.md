@@ -38,7 +38,3 @@ At some point, we may wish to update the app. The app is currently available on 
 I may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Terms and Conditions on this page. These changes are effective immediately after they are posted on this page.
 
 If you have any questions or suggestions about my Terms and Conditions, do not hesitate to contact me at mitchelltucker.com.
-
-By selecting agree, you agree to our updated Privacy Policy and our Terms of and Conditions.
-
-For more information about the app: https://github.com/MitchTODO/iOS-DogClassifier-App 
