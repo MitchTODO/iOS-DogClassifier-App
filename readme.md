@@ -3,8 +3,9 @@
 
 # Dog Classifier iOS App
 
-[![Alt text](https://img.youtube.com/vi/ArtnmjQnU8s/0.jpg)](https://www.youtube.com/watch?v=ArtnmjQnU8s&feature=youtu.be)
-
+<video width="320" height="240" controls>
+  <source src="video.mov" type="video/mp4">
+</video>
 
 ## Description
 
