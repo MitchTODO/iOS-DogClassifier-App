@@ -5,10 +5,6 @@
 
 ![](/readmePic/ezgif.com-video-to-gif.gif)
 
-<video width="320" height="240" controls>
-  <source src="/readmePic/RecordIt-4D2D2ED2-324B-46B0-B29A-3BF9C32FE8D8.mp4" type="video/mp4">
-</video>
-
 ## Description
 
 iOS app classifier that will predict dog breed by passing selected image into a trained neural network model.
