@@ -21,11 +21,11 @@ Deployment Target: 12.2
 
 ## User Interface
 
-UI consist of two views, "DogClassifierViewController.swift" as the root and "DogBreedImageViewController.swift"
+UI consist of three views, "DogClassifierViewController.swift" as the root, "DogBreedImageViewController.swift" and "AppInfoViewController.swift"
 
 ### DogClassifierViewController
 
-The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from photo library. Right bar button displays the camera to capture an image. Source image populates main image view and is classified by the trained neural network. Output from the neural network is displayed in the table view under the main image. Each table cell displays the breed name on left and percent of confidence on right side. Informational icon exist in each cell informing user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button enables saving and sending screen results. Right refreshes screen back to when the "view did load".
+The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from photo library. Right bar button displays the camera to capture an image. Source image populates main image view and is classified by the trained neural network. Output from the neural network is displayed in the table view under the main image. Each table cell displays the breed name on left and percent of confidence on right side. Informational icon exist in each cell informing user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button will display privacy policy and terms and conditions. Right refreshes screen back to when the "view did load".
 
 <div>
   <img src="/readmePic/0x0ss-3.jpg " alt="Mainscreen" width="240">
@@ -43,6 +43,10 @@ This controller will display up to 150 images of a specific dog breed to the use
 <div>
 <img src="/readmePic/dogPics.png " alt="dog pictures" width="240">
 </div>
+
+### AppInfoViewController
+
+View displays privacy policy and terms and conditions of the app. Always accessible through the top left bar button within "DogBreedImageViewController". 
 
 ## Neural Network
 
