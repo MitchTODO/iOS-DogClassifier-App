@@ -3,6 +3,9 @@
 
 # Dog Classifier iOS App
 
+[![Alt text](https://img.youtube.com/vi/ArtnmjQnU8s/0.jpg)](https://www.youtube.com/watch?v=ArtnmjQnU8s&feature=youtu.be)
+
+
 ## Description
 
 iOS app classifier that will predict dog breed by passing selected image into a trained neural network model.
