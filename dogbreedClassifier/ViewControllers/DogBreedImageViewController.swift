@@ -75,11 +75,13 @@ class DogBreedImageViewController: UIViewController, UINavigationControllerDeleg
         return CGSize(width: size, height: size)
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // set reusable cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
         
         // set placeholder image
+        
         cell.dogImageFromCeo.image = UIImage(named: "icon")
         
         // request for image related to each cell

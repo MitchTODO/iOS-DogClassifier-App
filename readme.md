@@ -3,10 +3,6 @@
 
 # Dog Classifier iOS App
 
-<video width="320" height="240" controls>
-  <source src="video.mov" type="video/mp4">
-</video>
-
 ## Description
 
 iOS app classifier that will predict dog breed by passing selected image into a trained neural network model.
@@ -30,9 +26,9 @@ UI consist of two views, "DogClassifierViewController.swift" as the root and "Do
 The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from photo library. Right bar button displays the camera to capture an image. Source image populates main image view and is classified by the trained neural network. Output from the neural network is displayed in the table view under the main image. Each table cell displays the breed name on left and percent of confidence on right side. Informational icon exist in each cell informing user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button enables saving and sending screen results. Right refreshes screen back to when the "view did load".
 
 <div>
-  <img src="/readmePic/0x0ss-3.jpg " alt="Mainscreen" width="240">
-  <img src="/readmePic/0x0ss-2.jpg " alt="predict" width="240">
-  <img src="/readmePic/0x0ss.jpg " alt="save" width="240">
+  <img src="/readmePic/mainScreen.png " alt="Mainscreen" width="240">
+  <img src="/readmePic/predict.png " alt="predict" width="240">
+  <img src="/readmePic/save.png " alt="save" width="240">
   </div>
 
 _Note: Outputs are limited to only relevant classifications more about this below._

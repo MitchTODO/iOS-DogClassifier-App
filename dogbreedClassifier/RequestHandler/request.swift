@@ -9,7 +9,6 @@
 import Foundation
 
 // MARK: - Endpoints
-
 struct dogEndpoint {
     static let scheme = "https"
     static let host = "dog.ceo"
@@ -21,6 +20,7 @@ struct allbreedsEndpoint {
     static let path = "/api/breeds/list/all"
 }
 
+// MARK: - contruct api URL
 var breedComponents:URLComponents{
     var components = URLComponents()
     components.scheme = allbreedsEndpoint.scheme
@@ -55,12 +55,10 @@ func jsonDecoder<T : Codable>(data:Data,type:T.Type, completionHandler:@escaping
 
 // MARK: - buildUrl
 func buildUrl(dogBreed:String) -> URLComponents{
-    
     var components = URLComponents()
     components.scheme = dogEndpoint.scheme
     components.host = dogEndpoint.host
     components.path = dogEndpoint.path + "/" + dogBreed + "/images"
-
     return components
 }
 

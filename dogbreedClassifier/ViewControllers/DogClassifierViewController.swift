@@ -9,7 +9,8 @@
 import UIKit
 import Foundation
 import CoreML
-import Vision
+import Photos
+
 
 // MARK: - UIImagePickerController
 extension UIImagePickerController {
@@ -54,18 +55,28 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        let defaults = UserDefaults.standard
+        let hasAgreed = defaults.bool(forKey: "Agreed")
+        if hasAgreed == false {
+            performSegue(withIdentifier: "toAppInfo", sender: self)
+        }
         
-        // set breed status
         appDelegate.breeds?.status = "unknown"
-        
-        // hide activity indicator
-        self.activityIndicatorLoadingNames.isHidden = true
         
         // make request for all breeds and sub-breeds
         self.fetchDogBreeds(showError: false,completeSegue: false,withName: nil)
         
+        
+        // hide activity indicator
+        self.activityIndicatorLoadingNames.isHidden = true
+        
         // imagePicker delegate
         self.imagePicker.delegate = self
+        
+        // set background image
+        self.imageView.image = UIImage(named:generateBackGroundImage())
+        self.imageView.backgroundColor = generateBackGoundColor()
         
         // setup tableView
         self.tableView.backgroundColor = UIColor.black
@@ -75,16 +86,14 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
 
 
         // setup navigationBar
-        self.title = "Dog Classifier"
-        let shareButton = UIBarButtonItem(barButtonSystemItem:.action, target: self, action: #selector(shareButtonOnClick))
-        let refeshButton = UIBarButtonItem(barButtonSystemItem:.refresh, target: self, action: #selector(refeshButtonOnClick))
-        self.navigationItem.rightBarButtonItem = refeshButton
-        self.navigationItem.leftBarButtonItem = shareButton
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        self.title = "Dog Breed AI Classifier"
         
+        // create bar button within navigationItem
+        let refreshButton = UIBarButtonItem(barButtonSystemItem:.refresh, target: self, action: #selector(refeshButtonOnClick))
+        self.navigationItem.rightBarButtonItem = refreshButton
+
         // check if device has a working camera
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
     }
     
     // MARK: - willTransition
@@ -111,6 +120,7 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
     
     @IBAction func chooseImageForPrediction(_ sender: Any) {
         let barButton = sender as! UIBarButtonItem
+        
         if barButton.tag == 2{
             imagePicker.sourceType = .photoLibrary
         }else{
@@ -119,59 +129,60 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    
     /// reloads view to default
     
     @objc func refeshButtonOnClick() {
-        // disable save button
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        
         // set imageView back to default
-        self.imageView.image = UIImage(named:"whiteIcon")
-        self.imageView.contentMode = .bottom
+        self.imageView.image = UIImage(named:generateBackGroundImage())
+        self.imageView.backgroundColor = generateBackGoundColor()
+        self.imageView.contentMode = .scaleAspectFit
+        
         // remove data from predictions and precents
         self.breedPredictionForImage.removeAll()
         self.breedPrecentForImage.removeAll()
+        
         // reload tableView change backgound to black
         self.tableView.reloadData()
         self.tableView.backgroundColor = UIColor.black
-
+        
+        // help labels are shown
         self.helpLabels.isHidden = false
         self.helpLabelTwo.isHidden = false
         self.helpLabelThree.isHidden = false
     }
     
-    /// presents UIActivtiyViewController
-    
-    @objc func shareButtonOnClick() {
-        let screenShot = self.generateImage()
-        let controller = UIActivityViewController(activityItems: [screenShot], applicationActivities: nil)
-        controller.popoverPresentationController?.sourceView = self.view
-        present(controller,animated:true,completion:nil)
+    /// presents perfromeSegueToPrivacyPoliciy
+    @IBAction func appInfoButton(_ sender: Any) {
+        performSegue(withIdentifier: "toAppInfo", sender:self)
     }
     
-    // MARK: - render shareable screenshot
+    // MARK: - random back-ground color
     
-    /// takes screenshot
+    /// random color is returned
     /// - Returns: UIImage
     
-    private func generateImage() -> UIImage {
-        configureBars(true) //tool,navi bar are hidden during the render of image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let screenImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        configureBars(false)
-        return screenImage
+    private func generateBackGoundColor() -> UIColor {
+        let names = [UIColor.blue, UIColor.green, UIColor.orange, UIColor.red, UIColor.yellow, UIColor.cyan, UIColor.magenta]
+        let randomColor = names.randomElement()
+        return randomColor!
     }
     
-    /// hides navigation and tools bar
+    // MARK: - random back-ground image
     
-    private func configureBars(_ isHidden: Bool){
-        navigationController?.setNavigationBarHidden(isHidden, animated: false)
-        self.toolbar.isHidden = isHidden
+    /// returned string represents image asset
+    /// - Returns: String
+    
+    private func generateBackGroundImage() -> String {
+        let number = Int.random(in: 1 ... 17)
+        return "dog\(number)"
     }
     
-    // MARK: - Model prediction modifiers
     
+    
+    /// MARK: - Model prediction modifiers
+    ///
     /// Sets the UIImage for prediction
     ///
     /// - Parameters:
@@ -180,20 +191,26 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.imageView.contentMode = .scaleAspectFit
+            // present pick image
+            self.imageView.contentMode = .scaleAspectFill
             self.imageView.image = pickedImage
+            // enable refresh button
             self.navigationItem.leftBarButtonItem?.isEnabled = true
-            
-            helpLabels.isHidden = true
-            helpLabelTwo.isHidden = true
-            helpLabelThree.isHidden = true
-            
+            // hide help labels
+            self.helpLabels.isHidden = true
+            self.helpLabelTwo.isHidden = true
+            self.helpLabelThree.isHidden = true
+            // show table view
             self.tableView.backgroundColor = UIColor.white
             self.activityIndicatorLoadingNames.isHidden = false
+            // reload table view
+            self.breedPredictionForImage.removeAll()
+            self.breedPrecentForImage.removeAll()
+            self.tableView.reloadData()
+            // pass image through model
             self.predictImage(image: pickedImage)
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
     
@@ -252,15 +269,12 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
             DispatchQueue.main.async {
                 
                 let sortedByValueDictionary = classifierOutput.classLabelProbs.sorted { $0.1 > $1.1 }
-                self.breedPredictionForImage.removeAll()
-                self.breedPrecentForImage.removeAll()
                 
                 for dog in sortedByValueDictionary{
                     let value = Int(dog.value * 100)
                     if value > 0{
                         self.breedPrecentForImage.append("\(value) %")
                         let fixedName = fixErrorPhoneDogBreeds(name: dog.key)
-                        
                         self.breedPredictionForImage.append(fixedName)
                     }
                 }
@@ -273,8 +287,8 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
     
     
     
-    // MARK: - UITableViewDataSource protocol
-    
+    /// MARK: - UITableViewDataSource protocol
+    ///
     // tell the table view how many rows to make
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return self.breedPredictionForImage.count
@@ -292,7 +306,7 @@ class dogClassifierViewController: UIViewController,UIImagePickerControllerDeleg
         return cell
         
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if appDelegate.breeds?.status == "success"{
             performSegue(withIdentifier: "toDogCeo", sender: self.breedPredictionForImage[indexPath.item])

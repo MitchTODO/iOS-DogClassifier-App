@@ -19,6 +19,8 @@
 		FEB780F122DE037F00F156BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEB780EF22DE037F00F156BB /* LaunchScreen.storyboard */; };
 		FEB780F922DE042700F156BB /* ImageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = FEB780F822DE042700F156BB /* ImageClassifier.mlmodel */; };
 		FEB780FD22DE2DB200F156BB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB780FC22DE2DB200F156BB /* TableViewCell.swift */; };
+		FEE282F422F4960100565C4B /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE282F322F4960100565C4B /* AppInfoViewController.swift */; };
+		FEE282F622F4C82100565C4B /* stringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE282F522F4C82100565C4B /* stringHelper.swift */; };
 		FEFF33BF22E78C7C003FE906 /* errorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF33BE22E78C7C003FE906 /* errorHandle.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		FEB780F222DE037F00F156BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEB780F822DE042700F156BB /* ImageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ImageClassifier.mlmodel; sourceTree = "<group>"; };
 		FEB780FC22DE2DB200F156BB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FEE282F322F4960100565C4B /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppInfoViewController.swift; path = dogbreedClassifier/ViewControllers/AppInfoViewController.swift; sourceTree = SOURCE_ROOT; };
+		FEE282F522F4C82100565C4B /* stringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringHelper.swift; sourceTree = "<group>"; };
 		FEFF33BE22E78C7C003FE906 /* errorHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorHandle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +60,7 @@
 			children = (
 				FE6713B222E8A99F00E3E51C /* imageHelper.swift */,
 				FE6713B422E8AB0500E3E51C /* dogNameHelper.swift */,
+				FEE282F522F4C82100565C4B /* stringHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -65,6 +70,7 @@
 			children = (
 				FEB780E522DE037D00F156BB /* DogClassifierViewController.swift */,
 				FE937D8822DF71D700400580 /* DogBreedImageViewController.swift */,
+				FEE282F322F4960100565C4B /* AppInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,12 +221,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE282F622F4C82100565C4B /* stringHelper.swift in Sources */,
 				FE6713B322E8A99F00E3E51C /* imageHelper.swift in Sources */,
 				FEB780E622DE037D00F156BB /* DogClassifierViewController.swift in Sources */,
 				FE937D8E22DFDB5200400580 /* request.swift in Sources */,
 				FEFF33BF22E78C7C003FE906 /* errorHandle.swift in Sources */,
 				FE937D8C22DFAFA800400580 /* CollectionViewCell.swift in Sources */,
 				FEB780E422DE037D00F156BB /* AppDelegate.swift in Sources */,
+				FEE282F422F4960100565C4B /* AppInfoViewController.swift in Sources */,
 				FEB780FD22DE2DB200F156BB /* TableViewCell.swift in Sources */,
 				FE937D8922DF71D800400580 /* DogBreedImageViewController.swift in Sources */,
 				FEB780F922DE042700F156BB /* ImageClassifier.mlmodel in Sources */,
@@ -370,14 +378,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XUYDZSBQ86;
 				INFOPLIST_FILE = dogbreedClassifier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = MTeam.dogbreedClassifier;
+				PRODUCT_BUNDLE_IDENTIFIER = MTeam.dogbreedclassifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -389,14 +398,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XUYDZSBQ86;
 				INFOPLIST_FILE = dogbreedClassifier/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = MTeam.dogbreedClassifier;
+				PRODUCT_BUNDLE_IDENTIFIER = MTeam.dogbreedclassifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
