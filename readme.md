@@ -55,14 +55,6 @@ Apple's CreateMLUI library was used to train the dog classifying neural network 
 
   <img src="/readmePic/model.png " alt="save" width="240">
 
-From the lines below a drag n drop neural network is created. Training begins when the dataset is dragged into Xcode.
-
-```javascript
-import CreateMLUI
-
-let builder = MLImageClassifierBuilder()
-builder.showInLiveView()
-```
 
 ### DataSet
 
