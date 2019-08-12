@@ -3,19 +3,13 @@
 
 # Dog Classifier iOS App
 
+__Note:__ This app has been accepted and is available for download on the app store. https://app.apple.com/us/app/dog-breed-ai-classifier/id1475200198
+
 ![](/readmePic/ezgif.com-video-to-gif.gif)
 
 ## Description
 
 iOS app classifier that will predict dog breed by passing selected image into a trained neural network model.
-
----
-
-## Versions
-
-Xcode: 10.3
-
-Deployment Target: 12.2
 
 ---
 
@@ -170,20 +164,6 @@ If network connectivity is slow, activity indicators become visible preventing u
 
 All errors are handled by extending a function that shows a UIAlertController to the Error class. This function allows for users to be notified with a friendly error message describing the error. (ErrorHandle.swift)
 
-
----
-
-## QuickStart
-
-Clone the repro.
-
-      git clone https://github.com/MitchTODO/iOS-DogClassifier-App
-
-Launch Xcode and select xcode project file within the repro.
-
-      dogbreedClassifier.xcodeproj
-
-Project will be displayed in xcode and simulation can be begin.
 
 ---
 
