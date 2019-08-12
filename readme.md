@@ -3,7 +3,7 @@
 
 # Dog Classifier iOS App
 
-__Note:__ This app has been accepted and is available for download on the app store. https://app.apple.com/us/app/dog-breed-ai-classifier/id1475200198
+__Note:__ This app has been accepted and is available for download on the app store. https://apps.apple.com/us/app/dog-breed-ai-classifier/id1475200198
 
 ![](/readmePic/ezgif.com-video-to-gif.gif)
 
