@@ -52,9 +52,7 @@ Apple's CreateMLUI library was used to train the dog classifying neural network 
 
 ### DataSet
 
-The dataset is from "Stanford Dogs Dataset", consisting of 120 different breeds and 20,580 images.
-
-http://vision.stanford.edu/aditya86/ImageNetDogs/
+The dataset consisties of 120 different breeds and 20,580 images.
 
 Data processing included blurring and flipping images.
 
@@ -164,14 +162,6 @@ If network connectivity is slow, activity indicators become visible preventing u
 
 All errors are handled by extending a function that shows a UIAlertController to the Error class. This function allows for users to be notified with a friendly error message describing the error. (ErrorHandle.swift)
 
-
----
-
-## Sources
-
-Dog Dataset used for training : http://vision.stanford.edu/aditya86/ImageNetDogs/
-
-Dog Api used to load images of a breed : https://dog.ceo/dog-api/documentation/
 
 
 ---
