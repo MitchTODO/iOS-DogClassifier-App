@@ -15,11 +15,7 @@ iOS app classifier that will predict dog breed by passing selected image into a 
 
 ## User Interface
 
-UI consist of three views, "DogClassifierViewController.swift" as the root, "DogBreedImageViewController.swift" and "AppInfoViewController.swift"
-
-### DogClassifierViewController
-
-The user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from photo library. Right bar button displays the camera to capture an image. Source image populates main image view and is classified by the trained neural network. Output from the neural network is displayed in the table view under the main image. Each table cell displays the breed name on left and percent of confidence on right side. Informational icon exist in each cell informing user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button will display privacy policy and terms and conditions. Right refreshes screen back to when the "view did load".
+UI consist of three views, the user starts by selecting a dog image for classifying. Two bar buttons within the tool bar allow for different image sources. Left bar button enables the user to select an image from photo library. Right bar button displays the camera to capture an image. Source image populates main image view and is classified by the trained neural network. Output from the neural network is displayed in the table view under the main image. Each table cell displays the breed name on left and percent of confidence on right side. Informational icon exist in each cell informing user that the cells are "press-able". Navigational bar contains two bar buttons, left bar button will display privacy policy and terms and conditions. Right will display a live view of the camera feed, this feed is passed into the model allowing live predictions to be made and displayed to the title of the view.
 
 <div>
   <img src="/readmePic/0x0ss-3.jpg " alt="Mainscreen" width="240">
